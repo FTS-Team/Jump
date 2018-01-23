@@ -1,0 +1,19 @@
+{
+	"FileVersion": 3,
+	"FriendlyName": "Kinect Xbox 360",
+	"Version": 1,
+	"VersionName": "0.1",
+	"CreatedBy": "ale",
+	"CreatedByURL": "",
+	"Category": "Kinect",
+	"Description": "Kinect Xbox 360",
+	"EnabledByDefault": false,
+	"Modules": [
+		{
+			"Name": "KinectPlugin",
+			"Type": "Runtime",
+			"LoadingPhase": "Default"
+		}
+	],
+	"CanContainContent" : "true"
+}
