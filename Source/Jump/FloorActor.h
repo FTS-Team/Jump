@@ -1,4 +1,4 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+ï»¿// Fill out your copyright notice in the Description page of Project Settings.
 
 #pragma once
 
@@ -25,44 +25,44 @@ public:
 	virtual void Tick(float DeltaTime) override;
 
 
-	// Òş²Ø/ÏÔÊ¾ Actor
+	// éšè—/æ˜¾ç¤º Actor
 	UFUNCTION()
 		void DisableActor(bool disable);
 
-	// ³ÊÏÖ Actor
+	// å‘ˆç° Actor
 	UFUNCTION()
 		void ShowActor();
 	
-	// Òş²Ø Actor
+	// éšè— Actor
 	UFUNCTION()
 		void HideActor();
 
-	// ³ÊÏÖÊ±¼ä
+	// å‘ˆç°æ—¶é—´
 	UPROPERTY(EditAnywhere , Category = "Show")
-		float showTime;//·ÖÊıÊôĞÔ
+		float showTime;//åˆ†æ•°å±æ€§
 
-	// ´ÓZÖáÆ«ÒÆÎ»ÖÃ³ÊÏÖ
+	// ä»Zè½´åç§»ä½ç½®å‘ˆç°
 	UPROPERTY(EditAnywhere , Category = "Show")
 		float ZFromShow;
 
 
-	// ¿ÕÏĞÒÆ¶¯ËÙ¶È(´óĞ¡ÒÔ¼°·½Ïò)
+	// ç©ºé—²ç§»åŠ¨é€Ÿåº¦(å¤§å°ä»¥åŠæ–¹å‘)
 	UPROPERTY(EditAnywhere, Category = "Idle")
 		FVector IdleMoveSpeed;
 
-	// ÊÇ·ñ½øĞĞ¿ÕÏĞÒÆ¶¯
+	// æ˜¯å¦è¿›è¡Œç©ºé—²ç§»åŠ¨
 	UPROPERTY(EditAnywhere, Category = "Idle")
 		bool CanIdleMove;
 
-	// FloorµÄ·ÖÊı
+	// Floorçš„åˆ†æ•°
 	UPROPERTY(EditAnywhere, Category = "Score")
 		int score;
 	
-	float showSpeed;//³ÊÏÖËÙ¶È
-	float remainShowTime;//Ê£ÓàµÄ³ÊÏÖÊ±¼ä
-	float remainHideTime;//Ê£ÓàµÄÒş²ØÊ±¼ä
-	bool isIdleMove;//ÊÇ·ñ¿ÉÒÔ¿ªÊ¼¿ÕÏĞÒÆ¶¯
-	float IdleRunTime;//¿ÕÏĞÒÆ¶¯¿ªÊ¼ºóµÄÊ±¼ä
+	float showSpeed;//å‘ˆç°é€Ÿåº¦
+	float remainShowTime;//å‰©ä½™çš„å‘ˆç°æ—¶é—´
+	float remainHideTime;//å‰©ä½™çš„éšè—æ—¶é—´
+	bool isIdleMove;//æ˜¯å¦å¯ä»¥å¼€å§‹ç©ºé—²ç§»åŠ¨
+	float IdleRunTime;//ç©ºé—²ç§»åŠ¨å¼€å§‹åçš„æ—¶é—´
 
 	
 };

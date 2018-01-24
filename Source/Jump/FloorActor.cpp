@@ -1,4 +1,4 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+ï»¿// Fill out your copyright notice in the Description page of Project Settings.
 
 #include "FloorActor.h"
 
@@ -9,7 +9,7 @@ AFloorActor::AFloorActor()
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
-	//³õÊ¼»¯Êı¾İ
+	//åˆå§‹åŒ–æ•°æ®
 	showTime = 2;
 	ZFromShow = -200;
 	IdleMoveSpeed = FVector(0, 0, 0);
@@ -35,33 +35,33 @@ void AFloorActor::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	//³ÊÏÖActorµÄÊ£ÓàÊ±¼ä
+	//å‘ˆç°Actorçš„å‰©ä½™æ—¶é—´
 	if (remainShowTime > 0) {
 
 		remainShowTime -= DeltaTime;
 
-		// ¿ÉÒÔ¿ªÊ¼¿ÕÏĞÒÆ¶¯
+		// å¯ä»¥å¼€å§‹ç©ºé—²ç§»åŠ¨
 		if (remainShowTime <= 0) {
 			isIdleMove = true;
 		}
 
-		// ĞÂµÄÎ»ÖÃ
+		// æ–°çš„ä½ç½®
 		FVector curLocation = GetActorLocation();
 		FVector offsetLocation = DeltaTime * showSpeed * FVector(0, 0, 1);
 		SetActorLocation(curLocation + offsetLocation);
 	}
 
-	//Òş²ØActrµÄÊ£ÓàÊ±¼ä
+	//éšè—Actrçš„å‰©ä½™æ—¶é—´
 	if (remainHideTime > 0) {
 
 		remainHideTime -= DeltaTime;
 
-		// ¿ÉÒÔDisable Floor
+		// å¯ä»¥Disable Floor
 		if (remainHideTime <= 0) {
 			DisableActor(true);
 		}
 
-		// ĞÂµÄÎ»ÖÃ
+		// æ–°çš„ä½ç½®
 		FVector curLocation = GetActorLocation();
 		FVector offsetLocation = DeltaTime * showSpeed * FVector(0, 0, 1);
 		SetActorLocation(curLocation + offsetLocation);
@@ -69,7 +69,7 @@ void AFloorActor::Tick(float DeltaTime)
 	}
 
 
-	//¿ÕÏĞÒÆ¶¯
+	//ç©ºé—²ç§»åŠ¨
 	if (isIdleMove && CanIdleMove) {
 
 		FVector NewLocation = GetActorLocation();
@@ -95,15 +95,15 @@ void AFloorActor::DisableActor(bool disable) {
 
 void AFloorActor::ShowActor() {
 
-	//¼¤»î
+	//æ¿€æ´»
 	DisableActor(false);
 
-	//ÉèÖÃ³ÊÏÖ³õÊ¼Î»ÖÃ
+	//è®¾ç½®å‘ˆç°åˆå§‹ä½ç½®
 	FVector initLocation = GetActorLocation();
 	FVector offsetLocation = ZFromShow * FVector(0, 0, 1);
 	SetActorLocation(initLocation + offsetLocation);
 
-	//ÉèÖÃÊ£Óà³ÊÏÖÊ±¼äÒÔ¼°ËÙ¶È
+	//è®¾ç½®å‰©ä½™å‘ˆç°æ—¶é—´ä»¥åŠé€Ÿåº¦
 	remainShowTime = showTime;
 	showSpeed = -(ZFromShow / showTime);
 
@@ -113,7 +113,7 @@ void AFloorActor::ShowActor() {
 void AFloorActor::HideActor() {
 
 
-	//ÉèÖÃÊ£ÓàÒş²ØÊ±¼äÒÔ¼°ËÙ¶È
+	//è®¾ç½®å‰©ä½™éšè—æ—¶é—´ä»¥åŠé€Ÿåº¦
 	remainHideTime = showTime;
 	showSpeed = -showSpeed;
 

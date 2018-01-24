@@ -1,4 +1,4 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+ï»¿// Fill out your copyright notice in the Description page of Project Settings.
 
 #pragma once
 
@@ -27,133 +27,138 @@ public:
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
 
-	// ´¦ÀíÇ°½øºÍºóÍËµÄÊäÈë¡£
+	// å¤„ç†å‰è¿›å’Œåé€€çš„è¾“å…¥ã€‚
 	UFUNCTION()
 		void MoveForward(float Value);
 
-	// ´¦Àí×óÓÒÒÆ¶¯µÄÊäÈë¡£
+	// å¤„ç†å·¦å³ç§»åŠ¨çš„è¾“å…¥ã€‚
 	UFUNCTION()
 		void MoveRight(float Value);
 
 
-	// °´ÏÂ°´¼üÊ±---¿ªÊ¼ĞîÁ¦
+	// æŒ‰ä¸‹æŒ‰é”®æ—¶---å¼€å§‹è“„åŠ›
 	UFUNCTION(BlueprintCallable, Category = "RedCharacter")
 		void ReadyJump();
 
-	// È¡ÏûĞîÁ¦
+	// å–æ¶ˆè“„åŠ›
 	UFUNCTION(BlueprintCallable, Category = "RedCharacter")
 		void cancelJump();
 
-	// ÔİÍ£ĞîÁ¦
+	// æš‚åœè“„åŠ›
 	UFUNCTION(BlueprintCallable, Category = "RedCharacter")
 		void pauseJump();
 
-	// ¼ÌĞøĞîÁ¦
+	// ç»§ç»­è“„åŠ›
 	UFUNCTION(BlueprintCallable, Category = "RedCharacter")
 		void ResumeJump();
 
-	// ËÉ¿ª°´¼üÊ±---½áÊøĞîÁ¦
+	// æ¾å¼€æŒ‰é”®æ—¶---ç»“æŸè“„åŠ›
 	UFUNCTION(BlueprintCallable, Category = "RedCharacter")
 		void StartJump();
 	
 
-	// ¿ªÊ¼×¼±¸ÌøÔ¾ÊÂ¼şÇı¶¯
+	// å¼€å§‹å‡†å¤‡è·³è·ƒäº‹ä»¶é©±åŠ¨
 	UFUNCTION(BlueprintImplementableEvent)
 		void ReadyJumpDrive();
 
-	// ¿ªÊ¼ÌøÔ¾ÊÂ¼şÇı¶¯
+	// å¼€å§‹è·³è·ƒäº‹ä»¶é©±åŠ¨
 	UFUNCTION(BlueprintImplementableEvent)
 		void StartJumpDrive();
 
-	// ½áÊøÌøÔ¾ÊÂ¼şÇı¶¯
+	// ç»“æŸè·³è·ƒäº‹ä»¶é©±åŠ¨
 	UFUNCTION(BlueprintImplementableEvent)
 		void EndJumpDrive();
 
-	// Ìí¼Ó·ÖÊıÊÂ¼şÇı¶¯
+	// æ·»åŠ åˆ†æ•°äº‹ä»¶é©±åŠ¨
 	UFUNCTION(BlueprintImplementableEvent)
 		void AddScoreDrive();
 
-	// ÂúĞîÁ¦Çı¶¯ÊÂ¼ş
+	// æ·»åŠ åŒå€åˆ†æ•°é©±åŠ¨
+	UFUNCTION(BlueprintImplementableEvent)
+		void AddDoubleScoreDrive();
+
+	// æ»¡è“„åŠ›é©±åŠ¨äº‹ä»¶
 	UFUNCTION(BlueprintImplementableEvent)
 		void FullPowerDrive();
 
-	// ½áÊøÓÎÏ·ÊÂ¼şÇı¶¯
+	// ç»“æŸæ¸¸æˆäº‹ä»¶é©±åŠ¨
 	UFUNCTION(BlueprintImplementableEvent)
 		void GameOverDrive();
 
-	// ÈËÎïËÀÍöÊÂ¼şÇı¶¯
+	// äººç‰©æ­»äº¡äº‹ä»¶é©±åŠ¨
 	UFUNCTION(BlueprintImplementableEvent)
 		void DieDrive();
 
-	// ³É¹¦´³¹ØÊÂ¼şÇı¶¯
+	// æˆåŠŸé—¯å…³äº‹ä»¶é©±åŠ¨
 	UFUNCTION(BlueprintImplementableEvent)
 		void VictoryDrive();
 
-	// ÔİÍ£ÓÎÏ·
+	// æš‚åœæ¸¸æˆ
 	UFUNCTION()
 		void setPause();
 
-	// ÖØĞÂ¿ªÊ¼
+	// é‡æ–°å¼€å§‹
 	UFUNCTION()
 		void reStartLevel();
 
-	// ÉèÖÃÆğÌøËÙ¶È
+	// è®¾ç½®èµ·è·³é€Ÿåº¦
 	UFUNCTION()
 		void setJumpSpeed(float speed);
 
-	// ¸Ä±ä·½Ïò
+	// æ”¹å˜æ–¹å‘
 	UFUNCTION()
 		void changeDirection();
 
-	// »ñÈ¡ÏÂÒ»¸ö·½¿é
+	// è·å–ä¸‹ä¸€ä¸ªæ–¹å—
 	UFUNCTION()
 		int getNextFloor();
 
-	// »ñÈ¡ÉÏÒ»¸ö·½¿é
+	// è·å–ä¸Šä¸€ä¸ªæ–¹å—
 	UFUNCTION()
 		int getLastFloor();
 
 
-	// °´µ±Ç°floorÔö¼Ó·ÖÊı
+	// æŒ‰å½“å‰floorå¢åŠ åˆ†æ•°
 	UFUNCTION()
 	void addScore();
 
 
-	// ÉèÖÃµ±Ç°ÌøÔ¾ĞîÁ¦Ê±¼ä
+	// è®¾ç½®å½“å‰è·³è·ƒè“„åŠ›æ—¶é—´
 	UFUNCTION()
 		void setJumpTime(float time);
 
-	// µ¯»É±Û
+	// å¼¹ç°§è‡‚
 	UPROPERTY(EditAnywhere)
 		class USpringArmComponent * SpringArm;
 
-	// ·ÖÊıÊôĞÔ
+	// åˆ†æ•°å±æ€§
 	UPROPERTY(EditAnywhere, BlueprintReadOnly)
 		int score;
-	// ĞîÁ¦ÊôĞÔ
+	// è“„åŠ›å±æ€§
 	UPROPERTY(EditAnywhere, BlueprintReadOnly)
 		float power;
 
 
-	const int speed = 500;//Ë®Æ½»ù±¾ËÙ¶È£¨speed * jumpTime = ×îÖÕË®Æ½ËÙ¶È)
-	const int GameOverZOffset = 400;//ÈËÎïËÀÍöºóµôÂäµÄ¸ß¶È
-	const int doubleScoreOffset = 10;//ÈËÎïË«±¶µÃ·ÖÆ«²î
-	const float minVertiSpeed = 400;//×îĞ¡´¹Ö±ËÙ¶È
-	const float timeOfChange = 1;//¸Ä±ä·½ÏòËùÓÃÊ±¼ä
-	const float maxJumpTime = 2;//×î´óĞîÁ¦Ê±¼ä
+	const int speed = 500;//æ°´å¹³åŸºæœ¬é€Ÿåº¦ï¼ˆspeed * jumpTime = æœ€ç»ˆæ°´å¹³é€Ÿåº¦)
+	const int GameOverZOffset = 400;//äººç‰©æ­»äº¡åæ‰è½çš„é«˜åº¦
+	const int doubleScoreOffset = 15;//äººç‰©åŒå€å¾—åˆ†åå·®
+	const float minVertiSpeed = 400;//æœ€å°å‚ç›´é€Ÿåº¦
+	const float timeOfChange = 1;//æ”¹å˜æ–¹å‘æ‰€ç”¨æ—¶é—´
+	const float maxJumpTime = 2;//æœ€å¤§è“„åŠ›æ—¶é—´
 
 
-	bool onReadyJump;//ÕıÔÚÌøÔ¾µÄ×´Ì¬
-	bool canChangeDirection;//¿ÉÒÔ¿ªÊ¼¸Ä±ä·½ÏòµÄ×´Ì¬
-	bool onPauseJump;//ÔİÍ£ĞîÁ¦ÌøÔ¾µÄ×´Ì¬
-	bool onFullPower;//ÂúĞîÁ¦×´Ì¬
+	bool onReadyJump;//æ­£åœ¨è·³è·ƒçš„çŠ¶æ€
+	bool canChangeDirection;//å¯ä»¥å¼€å§‹æ”¹å˜æ–¹å‘çš„çŠ¶æ€
+	bool onPauseJump;//æš‚åœè“„åŠ›è·³è·ƒçš„çŠ¶æ€
+	bool onFullPower;//æ»¡è“„åŠ›çŠ¶æ€
+	bool isDead;//äººç‰©æ­»äº¡çŠ¶æ€
 
-	float jumpTime;//ĞîÁ¦Ê±¼ä
-	float remainTimeOfChange;//¸Ä±ä·½ÏòµÄÊ£ÓàÊ±¼ä
-	FRotator velocityOfChange;//¸Ä±ä·½ÏòµÄËÙ¶È
+	float jumpTime;//è“„åŠ›æ—¶é—´
+	float remainTimeOfChange;//æ”¹å˜æ–¹å‘çš„å‰©ä½™æ—¶é—´
+	FRotator velocityOfChange;//æ”¹å˜æ–¹å‘çš„é€Ÿåº¦
 
 	
-	//²âÊÔÄ¾°å
+	//æµ‹è¯•æœ¨æ¿
 	int cur_floor;
 	TArray<AActor *> floorsArray;
 
