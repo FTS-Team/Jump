@@ -61,18 +61,6 @@ public:
 	UFUNCTION(BlueprintImplementableEvent)
 		void ReadyJumpDrive();
 
-	// 取消准备跳跃事件驱动
-	UFUNCTION(BlueprintImplementableEvent)
-		void CancelJumpDrive();
-
-	// 暂停蓄力事件驱动
-	UFUNCTION(BlueprintImplementableEvent)
-		void PauseJumpDrive();
-
-	// 继续蓄力事件驱动
-	UFUNCTION(BlueprintImplementableEvent)
-		void ResumeJumpDrive();
-
 	// 开始跳跃事件驱动
 	UFUNCTION(BlueprintImplementableEvent)
 		void StartJumpDrive();
@@ -81,14 +69,9 @@ public:
 	UFUNCTION(BlueprintImplementableEvent)
 		void EndJumpDrive();
 
-
 	// 添加分数事件驱动
 	UFUNCTION(BlueprintImplementableEvent)
 		void AddScoreDrive();
-
-	// 显示蓄力条事件驱动
-	UFUNCTION(BlueprintImplementableEvent)
-		void PowerDrive();
 
 	// 满蓄力驱动事件
 	UFUNCTION(BlueprintImplementableEvent)
@@ -97,6 +80,14 @@ public:
 	// 结束游戏事件驱动
 	UFUNCTION(BlueprintImplementableEvent)
 		void GameOverDrive();
+
+	// 人物死亡事件驱动
+	UFUNCTION(BlueprintImplementableEvent)
+		void DieDrive();
+
+	// 成功闯关事件驱动
+	UFUNCTION(BlueprintImplementableEvent)
+		void VictoryDrive();
 
 	// 暂停游戏
 	UFUNCTION()
@@ -118,6 +109,11 @@ public:
 	UFUNCTION()
 		int getNextFloor();
 
+	// 获取上一个方块
+	UFUNCTION()
+		int getLastFloor();
+
+
 	// 按当前floor增加分数
 	UFUNCTION()
 	void addScore();
@@ -127,15 +123,26 @@ public:
 	UFUNCTION()
 		void setJumpTime(float time);
 
-
+	// 弹簧臂
 	UPROPERTY(EditAnywhere)
-		class USpringArmComponent * SpringArm;//弹簧臂
+		class USpringArmComponent * SpringArm;
 
-	const int speed = 300;//水平基本速度（speed * jumpTime = 最终水平速度)
+	// 分数属性
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+		int score;
+	// 蓄力属性
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+		float power;
+
+
+	const int speed = 500;//水平基本速度（speed * jumpTime = 最终水平速度)
+	const int GameOverZOffset = 400;//人物死亡后掉落的高度
+	const int doubleScoreOffset = 10;//人物双倍得分偏差
 	const float minVertiSpeed = 400;//最小垂直速度
 	const float timeOfChange = 1;//改变方向所用时间
-	const float maxJumpTime = 5;//最大蓄力时间
-	
+	const float maxJumpTime = 2;//最大蓄力时间
+
+
 	bool onReadyJump;//正在跳跃的状态
 	bool canChangeDirection;//可以开始改变方向的状态
 	bool onPauseJump;//暂停蓄力跳跃的状态
@@ -144,13 +151,6 @@ public:
 	float jumpTime;//蓄力时间
 	float remainTimeOfChange;//改变方向的剩余时间
 	FRotator velocityOfChange;//改变方向的速度
-
-	
-	UPROPERTY(EditAnywhere, BlueprintReadOnly)
-	int score;//分数属性
-
-	UPROPERTY(EditAnywhere, BlueprintReadOnly)
-	float power;//蓄力属性
 
 	
 	//测试木板

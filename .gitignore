@@ -26,6 +26,9 @@
 *.a
 *.lib
 
+# Plugins should have lib
+!Plugins/**/ThirdParty/**/*.lib
+
 # Executables
 *.exe
 *.out
