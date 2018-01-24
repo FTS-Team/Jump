@@ -34,6 +34,7 @@ ARedCharacter::ARedCharacter()
 	onReadyJump = false;//蓄力跳跃的状态
     onPauseJump = false;//暂停蓄力跳跃的状态（保留蓄力)
 	onFullPower = false;//满蓄力状态
+	isDead = false;
 	score = 0;
 	
 
@@ -236,8 +237,9 @@ void ARedCharacter::Tick(float DeltaTime)
 			}
 
 			//判断是否人物死亡
-			if (player_minZ < floor_minZ) {
+			if ((!isDead) && (player_minZ + 40 < floor_minZ) ) {
 
+				isDead = true;
 				SpringArm->CameraLagSpeed = 6.0f;
 				DieDrive();
 
@@ -478,19 +480,18 @@ void ARedCharacter::addScore() {
 	FVector playerPos = GetActorLocation();
 	FVector2D playerPos2D = FVector2D(playerPos.X, playerPos.Y);
 
-	//双倍得分
 	if (FVector2D::Distance(floorPos2D, playerPos2D) < doubleScoreOffset) {
+
 		score += 2*(floor->score);
+		//增加双倍分数驱动事件
+		AddDoubleScoreDrive();
+
 	}
 	else {
 		score += (floor->score);
+		//增加分数驱动事件
+		AddScoreDrive();
 	}
-
-	
-
-	//增加分数驱动事件
-	AddScoreDrive();
-
 
 }
 
