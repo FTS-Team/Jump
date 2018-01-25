@@ -64,5 +64,9 @@ public:
 	bool isIdleMove;//是否可以开始空闲移动
 	float IdleRunTime;//空闲移动开始后的时间
 
+	//网格组件
+	UPROPERTY(EditAnywhere)
+		class UStaticMeshComponent* StaticMesh;
+
 	
 };

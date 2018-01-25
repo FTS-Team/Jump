@@ -140,7 +140,7 @@ public:
 
 
 	const int speed = 500;//水平基本速度（speed * jumpTime = 最终水平速度)
-	const int GameOverZOffset = 400;//人物死亡后掉落的高度
+	const int GameOverZOffset = 200;//人物死亡后掉落的高度
 	const int doubleScoreOffset = 15;//人物双倍得分偏差
 	const float minVertiSpeed = 400;//最小垂直速度
 	const float timeOfChange = 1;//改变方向所用时间
@@ -158,8 +158,9 @@ public:
 	FRotator velocityOfChange;//改变方向的速度
 
 	
-	//测试木板
+	//地板数组
 	int cur_floor;
 	TArray<AActor *> floorsArray;
+
 
 };
