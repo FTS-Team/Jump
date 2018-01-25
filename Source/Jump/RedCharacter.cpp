@@ -29,6 +29,8 @@ ARedCharacter::ARedCharacter()
 	Camera->AttachTo(SpringArm, USpringArmComponent::SocketName);
 
 
+
+
 	// 初始化变量
 	setJumpTime(0);
 	onReadyJump = false;//蓄力跳跃的状态
@@ -237,7 +239,7 @@ void ARedCharacter::Tick(float DeltaTime)
 			}
 
 			//判断是否人物死亡
-			if ((!isDead) && (player_minZ + 40 < floor_minZ) ) {
+			if ((!isDead) && (player_minZ + 30 < floor_minZ) ) {
 
 				isDead = true;
 				SpringArm->CameraLagSpeed = 6.0f;

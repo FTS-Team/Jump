@@ -1,6 +1,7 @@
 ﻿// Fill out your copyright notice in the Description page of Project Settings.
 
 #include "FloorActor.h"
+#include <Components/StaticMeshComponent.h>
 
 
 // Sets default values
@@ -8,6 +9,10 @@ AFloorActor::AFloorActor()
 {
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
+
+	// 创建静态网格组件
+	StaticMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("StaticMesh"));
+	SetRootComponent(StaticMesh);//设置根组件
 
 	//初始化数据
 	showTime = 2;
