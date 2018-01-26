@@ -436,7 +436,7 @@ void ARedCharacter::changeDirection() {
 
 
 		// 成功闯关驱动
-		if (cur_floor == floorsArray.Num()) {
+		if (cur_floor == floorsArray.Num() - 1) {
 
 			VictoryDrive();
 
