@@ -2,6 +2,6 @@
 	"BuildId": "3709383",
 	"Modules": 
 	{
-		"KinectPlugin": "UE4Editor-KinectPlugin-2705.dll"
+		"KinectPlugin": "UE4Editor-KinectPlugin.dll"
 	}
 }
