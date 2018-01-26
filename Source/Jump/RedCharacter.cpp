@@ -119,51 +119,51 @@ void ARedCharacter::Tick(float DeltaTime)
 	}
 
 	// 显示调试信息
-	if (GEngine)
-	{
+	//if (GEngine)
+	//{
 
-		FString message("Power Time : ");
-	
-		message += FString::SanitizeFloat(jumpTime);
-		message += " \n Score : " + FString::SanitizeFloat(score);
-		message += " \n Floor Index : " + FString::SanitizeFloat(cur_floor);
-		message += " \n Floor Name : ";
-	
+	//	FString message("Power Time : ");
+	//
+	//	message += FString::SanitizeFloat(jumpTime);
+	//	message += " \n Score : " + FString::SanitizeFloat(score);
+	//	message += " \n Floor Index : " + FString::SanitizeFloat(cur_floor);
+	//	message += " \n Floor Name : ";
+	//
 
-		if (floorsArray.Num() > 0) {
+	//	if (floorsArray.Num() > 0) {
 
-			//块总数
-			message += (floorsArray[cur_floor]->GetName());
-			message += " \n Num : " + FString::SanitizeFloat(floorsArray.Num());
+	//		//块总数
+	//		message += (floorsArray[cur_floor]->GetName());
+	//		message += " \n Num : " + FString::SanitizeFloat(floorsArray.Num());
 
-			//message += " \n Origin: " + origin.ToString();
-			//message += " \n Box: " + box.ToString();
-			//获取当前floor的边界
+	//		//message += " \n Origin: " + origin.ToString();
+	//		//message += " \n Box: " + box.ToString();
+	//		//获取当前floor的边界
 
-			FVector origin;
-			FVector box;
-			floorsArray[cur_floor]->GetActorBounds(false, origin, box);
-			FVector2D minPoint(origin.X - box.X , origin.Y - box.Y );
-			FVector2D maxPoint(origin.X + box.X , origin.Y + box.Y );
-			FBox2D floorBox(minPoint, maxPoint);
+	//		FVector origin;
+	//		FVector box;
+	//		floorsArray[cur_floor]->GetActorBounds(false, origin, box);
+	//		FVector2D minPoint(origin.X - box.X , origin.Y - box.Y );
+	//		FVector2D maxPoint(origin.X + box.X , origin.Y + box.Y );
+	//		FBox2D floorBox(minPoint, maxPoint);
 
-			//player Box
-			FVector playerOrigin = GetActorLocation();
-			float radius = GetCapsuleComponent()->GetScaledCapsuleRadius();
-			FVector2D playerMinPoint(playerOrigin.X - radius , playerOrigin.Y - radius);
-			FVector2D playerMaxPoint(playerOrigin.X + radius, playerOrigin.Y + radius);
-			FBox2D playerBox(playerMinPoint, playerMaxPoint);
+	//		//player Box
+	//		FVector playerOrigin = GetActorLocation();
+	//		float radius = GetCapsuleComponent()->GetScaledCapsuleRadius();
+	//		FVector2D playerMinPoint(playerOrigin.X - radius , playerOrigin.Y - radius);
+	//		FVector2D playerMaxPoint(playerOrigin.X + radius, playerOrigin.Y + radius);
+	//		FBox2D playerBox(playerMinPoint, playerMaxPoint);
 
-			/*message += " \n Player Origin: " + playerOrigin.ToString();
-			message += " \n Player Box: " + playerBox.ToString();
-			message += " \n Floor Origin: " + origin.ToString();
-			message += " \n Floor Box: " + floorBox.ToString();*/
-			
-		}
-		
-		GEngine->AddOnScreenDebugMessage(0, 60.0f, FColor::Green, (message), true, FVector2D(1, 1));
+	//		/*message += " \n Player Origin: " + playerOrigin.ToString();
+	//		message += " \n Player Box: " + playerBox.ToString();
+	//		message += " \n Floor Origin: " + origin.ToString();
+	//		message += " \n Floor Box: " + floorBox.ToString();*/
+	//		
+	//	}
+	//	
+	//	GEngine->AddOnScreenDebugMessage(0, 60.0f, FColor::Green, (message), true, FVector2D(1, 1));
 
-	}
+	//}
 
 	// 当前地板转换及方向转换判断
 	if (GetCharacterMovement()->GetMovementName() != "Falling" && canChangeDirection) {
