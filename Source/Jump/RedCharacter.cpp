@@ -173,10 +173,10 @@ void ARedCharacter::Tick(float DeltaTime)
 		// 判断是不是到新的floor上, 如果是则改变方向
 		if (floorsArray.Num() > 0) {
 
-			//获取当前floor的边界
+			//获取下一个floor的边界
 			FVector origin;
 			FVector box;
-			floorsArray[cur_floor]->GetActorBounds(false, origin, box);
+			floorsArray[getNextFloor()]->GetActorBounds(false, origin, box);
 			
 			FVector2D minPoint(origin.X - box.X , origin.Y - box.Y );
 			FVector2D maxPoint(origin.X + box.X , origin.Y + box.Y );
@@ -189,9 +189,8 @@ void ARedCharacter::Tick(float DeltaTime)
 			FVector2D playerMaxPoint(playerOrigin.X + radius, playerOrigin.Y + radius);
 			FBox2D playerBox(playerMinPoint, playerMaxPoint);
 
-			if (!floorBox.Intersect(playerBox) && !floorBox.IsInside(playerBox)) {
+			if (floorBox.Intersect(playerBox) ||floorBox.IsInside(playerBox)) {
 
-				// 开始改变方向
 				changeDirection();
 
 			}
