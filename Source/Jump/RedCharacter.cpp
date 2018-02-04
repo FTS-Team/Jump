@@ -1,10 +1,11 @@
 ﻿// Fill out your copyright notice in the Description page of Project Settings.
 
 #include "RedCharacter.h"
-#include <GameFramework/CharacterMovementComponent.h>
-#include <GameFramework/SpringArmComponent.h>
-#include <Engine.h>
+#include "GameFramework/CharacterMovementComponent.h"
+#include "GameFramework/SpringArmComponent.h"
+#include "GameFramework/Character.h"
 #include "FloorActor.h"
+#include "Engine.h"
 
 // Sets default values
 ARedCharacter::ARedCharacter()
@@ -29,8 +30,6 @@ ARedCharacter::ARedCharacter()
 	Camera->AttachTo(SpringArm, USpringArmComponent::SocketName);
 
 
-
-
 	// 初始化变量
 	setJumpTime(0);
 	onReadyJump = false;//蓄力跳跃的状态
@@ -39,15 +38,6 @@ ARedCharacter::ARedCharacter()
 	isDead = false;
 	score = 0;
 	
-
-	// floorArray
-	TSubclassOf<AFloorActor> classToFind;
-	classToFind = AFloorActor::StaticClass();
-	UGameplayStatics::GetAllActorsOfClass(GetWorld(), classToFind, floorsArray);
-	//按floor名称排序
-	floorsArray.Sort([](const AActor & A, const AActor & B) {
-		return A.GetName() < B.GetName();
-	});
 	cur_floor = 0;
 	canChangeDirection = false;
 
@@ -66,6 +56,16 @@ void ARedCharacter::BeginPlay()
 {
 
 	Super::BeginPlay();
+
+	// floorArray
+	TSubclassOf<AFloorActor> classToFind;
+	classToFind = AFloorActor::StaticClass();
+	UGameplayStatics::GetAllActorsOfClass(GetWorld(), classToFind, floorsArray);
+	//按floor名称排序
+	floorsArray.Sort([](const AActor & A, const AActor & B) {
+		return A.GetName() < B.GetName();
+	});
+
 
 	// 先禁用所有floors
 	for (int i = 0; i < floorsArray.Num(); i++) {
